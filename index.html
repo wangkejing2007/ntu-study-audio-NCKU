@@ -19,12 +19,17 @@
       100% { opacity:0.1; }
     }
     .hidden { display:none; }
+    @media (max-width: 768px) {
+      img.responsive-img { width:70% !important; }
+      h1 span.phase-text { font-size:24px !important; }
+      audio { width:70% !important; }
+    }
   </style>
 </head>
 <body style="text-align:center; font-family:Arial, sans-serif; background:#fef9f9; padding:40px;">
-  <img src="https://i.meee.com.tw/9qhvj9q.png" alt="讀書計畫主圖" style="width:50%; border-radius:5px; margin-bottom:2px;" />
+  <img class="responsive-img" src="https://i.meee.com.tw/9qhvj9q.png" alt="讀書計畫主圖" style="width:50%; border-radius:5px; margin-bottom:2px;" />
   <h1 style="font-size:40px; font-weight:500; margin-bottom:10px;">
-    <span style="font-weight:bold; display:block; margin-bottom:20px;">Phase 1：</span>
+    <span class="phase-text" style="font-weight:bold; display:block; margin-bottom:20px;">Phase 1：</span>
     <span style="display:block; font-size:28px; margin-bottom:12px;">Foundation and Orientation</span>
     <span style="display:block; font-size:24px;">Preparation Before University</span>
   </h1>
