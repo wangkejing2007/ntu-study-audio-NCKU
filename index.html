@@ -4,6 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>預覽聽書計劃</title>
+  <style>
+    .pulse {
+      font-size:20px;
+      color:#7f1d1d;
+      margin:30px 0;
+      font-weight:bold;
+      animation: pulse 2s ease-in-out infinite;
+      cursor: pointer;
+    }
+    @keyframes pulse {
+      0% { opacity:0.1; }
+      50% { opacity:1; }
+      100% { opacity:0.1; }
+    }
+    .hidden { display:none; }
+  </style>
 </head>
 <body style="text-align:center; font-family:Arial, sans-serif; background:#fef9f9; padding:40px;">
   <img src="https://i.meee.com.tw/9qhvj9q.png" alt="讀書計畫主圖" style="width:50%; border-radius:5px; margin-bottom:2px;" />
@@ -12,11 +28,21 @@
     <span style="display:block; font-size:28px; margin-bottom:12px;">Foundation and Orientation</span>
     <span style="display:block; font-size:24px;">Preparation Before University</span>
   </h1>
-  <p style="font-size:20px; color:#7f1d1d; margin:30px 0; font-weight:bold;">點一下畫面開始播放</p>
-  <audio controls style="width:45%; margin-top:20px; border:2px solid rgba(0,0,0,0.3); border-radius:12px; padding:8px;">
+  <p id="pulseText" class="pulse">點一下畫面開始播放</p>
+  <audio id="player" controls style="width:45%; margin-top:20px; border:2px solid rgba(0,0,0,0.3); border-radius:12px; padding:8px;">
     <source src="NCKU-Phase-1.mp3" type="audio/mpeg">
     您的瀏覽器不支援音訊播放。
   </audio>
   <p style="font-size:18px; color:#231815; margin-top:20px;">⚠️本音訊檔使用我本人聲音樣本以 TTS AI 合成語音。</p>
+  <script>
+    const player = document.getElementById('player');
+    const pulseText = document.getElementById('pulseText');
+    document.body.addEventListener('click', (e) => {
+      if (!player.contains(e.target) && player.paused) {
+        player.play();
+        pulseText.classList.add('hidden');
+      }
+    });
+  </script>
 </body>
 </html>
