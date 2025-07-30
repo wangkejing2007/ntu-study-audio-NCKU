@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>聽書計劃</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", "微軟正黑體", sans-serif;
+      background: radial-gradient(circle at center, #fef9f9, #d6e4f0);
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .header-image {
+            width: 60%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+     @media (max-width: 768px) {
+      .header-image {
+        width: 40%;
+      }
+    }
+    h1 {
+      font-size: 48px;
+      font-weight: 500;
+      font-family: "Noto Sans TC", "黑體-繁", "微軟正黑體", sans-serif;
+      color: #000000;
+      margin-bottom: 10px;
+      text-align: center;
+      line-height: 1.2;
+      white-space: pre-line;
+    }
+    h1 span {
+      display: block;
+      font-size: 32px;
+    }
+    h1 span.sub {
+      font-size: 28px;
+    }
+
+    .pulse {
+      font-size: 26px;
+      font-weight: bold;
+      color: #7f1d1d;
+      animation: pulse 2s ease-in-out infinite;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.1;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0.1;
+      }
+    }
+
+ .note {
+      font-size: 20px;
+      color: #231815;
+      margin-top: 20px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .note {
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 32px;
+      }
+      h1 span {
+        font-size: 24px;
+      }
+      h1 span.sub {
+        font-size: 20px;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    audio {
+      width: 45%;
+      border: 2px solid rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      audio {
+        width: 75%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="https://i.meee.com.tw/9qhvj9q.png" alt="讀書計畫主圖" class="header-image">
+  <h1>Phase 1：<span>Foundation and Orientation</span><span class="sub">Preparation Before University</span></h1>
+  <div id="pulseText" class="pulse">點一下畫面開始播放</div>
+
+  <audio id="player" controls>
+    <source src="NCKU-Phase-1.mp3" type="audio/mpeg" />
+    您的瀏覽器不支援音訊播放。
+  </audio>
+
+  <div class="note">
+    ⚠️本音訊檔使用我本人聲音樣本以 TTS AI 合成語音。
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const player = document.getElementById("player");
+      const pulseText = document.getElementById("pulseText");
+
+      function handlePlay(event) {
+        if (!player.contains(event.target) && player.paused) {
+          player.play();
+          if (pulseText) pulseText.classList.add("hidden");
+        }
+      }
+
+      document.body.addEventListener("click", handlePlay);
+    });
+  </script>
+</body>
+</html>
